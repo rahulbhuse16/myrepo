@@ -10,7 +10,7 @@ export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Post()
-  create(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+  create(@Body() createTaskDto: CreateTaskDto[]): Promise<Task[]> {
     return this.tasksService.create(createTaskDto);
   }
 
