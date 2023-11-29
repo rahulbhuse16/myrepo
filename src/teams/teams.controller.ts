@@ -10,7 +10,7 @@ export class TeamsController {
   constructor(private readonly teamsService: TeamsService) {}
 
   @Post()
-  create(@Body() createTeamDto: CreateTeamDto): Promise<Team> {
+  create(@Body() createTeamDto: CreateTeamDto[]): Promise<Team[]> {
     return this.teamsService.create(createTeamDto);
   }
 
