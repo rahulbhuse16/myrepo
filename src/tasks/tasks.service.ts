@@ -23,7 +23,13 @@ export class TasksService {
     return this.taskModel.find({ assignee }).exec();
   }
 
-  async updateStatus(id: string, status: string): Promise<Task> {
-    return this.taskModel.findByIdAndUpdate(id, { status }, { new: true }).exec();
+  async update(id: string, task: Task): Promise<Task> {
+    const updatedTask = await this.taskModel.findByIdAndUpdate(id, task,{ new: true });
+    
+    if (!updatedTask) {
+      throw new NotFoundException(`task with ID ${id} not found`);
+    }
+
+    return updatedTask;
   }
 }
