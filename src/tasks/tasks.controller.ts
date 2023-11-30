@@ -23,9 +23,9 @@ export class TasksController {
   findByAssignee(@Param('assignee') assignee: string): Promise<Task[]> {
     return this.tasksService.findByAssignee(assignee);
   }
-
-  @Put(':id/status')
-  updateStatus(@Param('id') id: string, @Body('status') status: string): Promise<Task> {
-    return this.tasksService.updateStatus(id, status);
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() task:Task): Promise<Task> {
+    return this.tasksService.update(id, task);
   }
+ 
 }
